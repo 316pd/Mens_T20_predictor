@@ -36,16 +36,16 @@ if user_menu == 'Score Predictor(1st Innings)':
     selected_city = st.selectbox('Select the city(venue)', City)
     col3, col4 = st.columns(2)
     with col3:
-        cur_score = st.number_input('Current score')
+        cur_score = st.number_input('Current score',min_value=0, value=0, step=1)
         cur_score = int(cur_score)
     with col4:
         cur_over = st.number_input('Overs completed(works for > 5 overs)')
     col5, col6 = st.columns(2)
     with col5:
-        cur_out = st.number_input('Wickets out')
+        cur_out = st.number_input('Wickets out',min_value=0, max_value=10, value=0, step=1)
         cur_out = int(cur_out)
     with col6:
-        run_prev5 = st.number_input('Runs scored in last 5 overs')
+        run_prev5 = st.number_input('Runs scored in last 5 overs',min_value=0, value=0, step=1)
     if st.button('Predict'):
         cur_balls = int((int(cur_over)*6) + (cur_over%int(cur_over))*10)
         balls_left = 120-cur_balls
@@ -68,16 +68,16 @@ if user_menu == 'Win Predictor(2nd Innings)':
     selected_city = st.selectbox('Select the city(venue)', City)
     col3, col4 = st.columns(2)
     with col3:
-        target = st.number_input('Target')
+        target = st.number_input('Target',min_value=0, value=0, step=1)
         target = int(target)
     with col4:
-        cur_score = st.number_input('Current score')
+        cur_score = st.number_input('Current score',min_value=0, value=0, step=1)
         cur_score = int(cur_score)
     col5, col6 = st.columns(2)
     with col5:
         cur_over = st.number_input('Overs completed')
     with col6:
-        cur_out = st.number_input('Wickets out')
+        cur_out = st.number_input('Wickets out',min_value=0, max_value=10, value=0, step=1)
         cur_out = int(cur_out)
     if st.button('Predict'):
         runs_left = target - cur_score
